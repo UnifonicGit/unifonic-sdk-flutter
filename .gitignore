@@ -1,0 +1,6 @@
+.idea
+.vscode
+
+# Ignore misc folder and Makefile
+misc/
+Makefile

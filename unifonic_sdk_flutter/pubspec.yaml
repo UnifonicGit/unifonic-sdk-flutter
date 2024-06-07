@@ -1,0 +1,38 @@
+name: unifonic_sdk_flutter
+description: Unifonic Flutter SDK for iOS and Android
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0 <4.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  unifonic_sdk_flutter_platform_interface:
+    path: "../unifonic_sdk_flutter_platform_interface"
+  unifonic_sdk_flutter_android:
+    path: "../unifonic_sdk_flutter_android"
+  unifonic_sdk_flutter_ios:
+    path: "../unifonic_sdk_flutter_ios"
+  http: ^1.2.1
+  device_info_plus: ^10.1.0
+  geolocator: ^12.0.0
+  uuid: ^4.4.0
+  shared_preferences: ^2.2.3
+  package_info_plus: ^8.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.2
+
+flutter:
+  uses-material-design: false
+  plugin:
+    platforms:
+      android:
+        default_package: unifonic_sdk_flutter_android
+      ios:
+        default_package: unifonic_sdk_flutter_ios

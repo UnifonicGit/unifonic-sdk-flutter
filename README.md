@@ -26,9 +26,14 @@ dependencies:
 ---
 3. In your `main.dart`, use the following code to initialize the Unifonic Flutter SDK:
 ```dart
-await Unifonic().init([
-  UniPush(apiKey: "your-api-key:your-secret-key"),
-]);
+void main() async {
+  // ... any other initializers
+  runApp(const MyApp());
+  await Unifonic().init([
+    UniPush(apiKey: "your-api-key:your-secret-key"), // best to use a package like "ENVied" or at least "--dart-define"
+  ]);
+  // ... any other initializers
+}
 ```
 ---
 4. Now, `UniPush` is available to be used via:
@@ -38,6 +43,19 @@ Unifonic.push
 Thus you can retrieve the token (if it has already been set by the OS) like so:
 ```dart
 Unifonic.push.token
+```
+---
+### Primary Methods
+---
+#### Register the device (and User) with Unifonic (=> `Future<bool>`)
+```dart
+Unifonic.registerDevice(userIdentifier: "123456789");
+// A `userIdentifier` should always be passed. Even if you're planning to track users anonymously,  
+// you should provide an Identifier that you can resolve to a real User ID once  
+// a User is authenticated.  
+// Generally, it can be null. In this case, we will generate a random UUID and store it in SharedPreferences.  
+// However, we do not recommend this approach (of leaving the `userIdentifier` empty) as it won't be  
+// possible to reconcile a real User once authenticated (as of yet).
 ```
 ---
 ### Streams
@@ -67,12 +85,6 @@ Unifonic.push.onNotificationTapStream.listen((message) {
 ```
 ---
 ### Other methods
----
-#### Register the device (and User) with Unifonic (=> `Future<bool>`)
-```dart
-Unifonic.registerDevice(userIdentifier: "123456789");
-// `userIdentifier` can be null. In this case, we will generate a random UUID and store it in SharedPreferences. This allows for anonymous tracking.
-```
 ---
 #### Permission can be requested explicitly (=> `Future<bool>`)
 ```dart

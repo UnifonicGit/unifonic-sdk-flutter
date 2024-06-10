@@ -15,7 +15,9 @@ To install the Unifonic SDK Flutter, follow these steps:
 ```yaml
 dependencies:
   unifonic_sdk_flutter:
-    path: https://github.com/UnifonicGit/unifonic-sdk-flutter
+    git:
+      url: https://github.com/UnifonicGit/unifonic-sdk-flutter.git
+      path: unifonic_sdk_flutter
 ```
 ---
 2. Additional setup requirements:  

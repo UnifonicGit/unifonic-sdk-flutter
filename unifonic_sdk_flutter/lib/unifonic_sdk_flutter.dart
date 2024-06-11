@@ -92,6 +92,7 @@ class Unifonic {
 
   /// Register the device with the provided [UniDeviceInfo].
   /// This method will send the device information to the server to register the device.
+  /// This needs to be done before it's possible to send any Push Notification to the device.
   /// The [UniDeviceInfo] object should contain the user identifier.
   /// If the user identifier is not provided, a random user identifier will be generated and stored in the device.
   static Future<bool> registerDevice({String? userIdentifier}) async {

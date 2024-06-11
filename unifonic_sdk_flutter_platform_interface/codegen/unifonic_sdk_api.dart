@@ -16,7 +16,7 @@ import 'package:pigeon/pigeon.dart';
   objcOptions: ObjcOptions(prefix: "UNI"),
   kotlinOptions: KotlinOptions(package: 'com.unifonic.sdk.models'),
   kotlinOut:
-      '../unifonic_sdk_flutter_android/android/src/main/kotlin/com/unifonic/sdk/models/PushHostApi.kt',
+      '../unifonic_sdk_flutter_android/android/src/main/kotlin/com/unifonic/sdk/models/PushApi.kt',
 ))
 // End of configuration
 

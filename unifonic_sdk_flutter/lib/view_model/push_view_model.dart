@@ -92,7 +92,10 @@ class UniPushVM {
 
   /// Get the notification settings.
   /// This method will return a [Future] of [UNNotificationSettings].
-  Future<UNNotificationSettings> getNotificationSettings() async {
+  Future<UNNotificationSettings?> getNotificationSettings() async {
+    if (Platform.isAndroid) {
+      return null;
+    }
     return await UnifonicPush.instance.getNotificationSettings();
   }
 

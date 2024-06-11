@@ -18,6 +18,7 @@ dependencies:
     git:
       url: https://github.com/UnifonicGit/unifonic-sdk-flutter.git
       path: unifonic_sdk_flutter
+      ref: release/0.0.5
 ```
 ---
 2. Additional setup requirements:  
@@ -50,12 +51,15 @@ Unifonic.push.token
 #### Register the device (and User) with Unifonic (=> `Future<bool>`)
 ```dart
 Unifonic.registerDevice(userIdentifier: "123456789");
+// This method needs to be called before it's possible to send any Push Notification to the device.
 // A `userIdentifier` should always be passed. Even if you're planning to track users anonymously,  
 // you should provide an Identifier that you can resolve to a real User ID once  
 // a User is authenticated.  
 // Generally, it can be null. In this case, we will generate a random UUID and store it in SharedPreferences.  
 // However, we do not recommend this approach (of leaving the `userIdentifier` empty) as it won't be  
 // possible to reconcile a real User once authenticated (as of yet).
+// Also, you would have to read the `userIdentifier` key from SharedPreferences in order
+// to retrieve the `userIdentifier`.
 ```
 ---
 ### Streams

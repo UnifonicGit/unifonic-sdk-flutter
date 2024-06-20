@@ -21,14 +21,14 @@ class UniDeviceInfo {
   /// The operating system of the device. Typically "ANDROID" or "IOS".
   String? deviceOs;
 
-  /// The latitude of the device's current location.
-  double? latitude;
+  // /// The latitude of the device's current location.
+  // double? latitude;
 
-  /// The longitude of the device's current location.
-  double? longitude;
+  // /// The longitude of the device's current location.
+  // double? longitude;
 
-  /// The country where the device is located. E.g., "UAE".
-  String? country;
+  // /// The country where the device is located. E.g., "UAE".
+  // String? country;
 
   /// The language setting of the device. E.g., "US".
   String? deviceLanguage;
@@ -42,11 +42,11 @@ class UniDeviceInfo {
   /// The version of your application, like semver "1.0.0".
   String? appVersion;
 
-  /// The package name of your application, like "com.example.app".
-  String? packageName;
+  // /// The package name of your application, like "com.example.app".
+  // String? packageName;
 
-  /// The build number of your application, like like 622.
-  String? buildNumber;
+  // /// The build number of your application, like like 622.
+  // String? buildNumber;
 
   /// Constructs a new `UniDeviceInfo` with the given details.
   ///
@@ -56,15 +56,15 @@ class UniDeviceInfo {
     this.deviceType,
     this.deviceModel,
     this.deviceOs,
-    this.latitude,
-    this.longitude,
-    this.country,
+    // this.latitude,
+    // this.longitude,
+    // this.country,
     this.deviceLanguage,
     this.deviceTimezone,
     this.pushToken,
     this.appVersion,
-    this.packageName,
-    this.buildNumber,
+    // this.packageName,
+    // this.buildNumber,
   });
 
   /// Converts this `UniDeviceInfo` to a Map.
@@ -75,16 +75,16 @@ class UniDeviceInfo {
       'deviceType': deviceType,
       'deviceModel': deviceModel,
       'deviceOs': deviceOs,
-      'latitude': latitude,
-      'longitude': longitude,
-      'country': country,
+      // 'latitude': latitude,
+      // 'longitude': longitude,
+      // 'country': country,
       'deviceLanguage': deviceLanguage,
       'deviceTimezone': deviceTimezone,
       'pushToken': pushToken,
       'userIdentifier': userIdentifier,
       'appVersion': appVersion,
-      'packageName': packageName,
-      'buildNumber': buildNumber,
+      // 'packageName': packageName,
+      // 'buildNumber': buildNumber,
     };
   }
 
@@ -97,16 +97,16 @@ class UniDeviceInfo {
       deviceType: map['deviceType'],
       deviceModel: map['deviceModel'],
       deviceOs: map['deviceOs'],
-      latitude: map['latitude'],
-      longitude: map['longitude'],
-      country: map['country'],
+      // latitude: map['latitude'],
+      // longitude: map['longitude'],
+      // country: map['country'],
       deviceLanguage: map['deviceLanguage'],
       deviceTimezone: map['deviceTimezone'],
       pushToken: map['pushToken'],
       userIdentifier: map['userIdentifier'],
       appVersion: map['appVersion'],
-      packageName: map['packageName'],
-      buildNumber: map['buildNumber'],
+      // packageName: map['packageName'],
+      // buildNumber: map['buildNumber'],
     );
   }
 }

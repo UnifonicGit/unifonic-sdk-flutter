@@ -4,8 +4,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:unifonic_sdk_flutter/model/uni_active_capabilities.dart';
 import 'package:unifonic_sdk_flutter/model/uni_device_info.dart';
 import 'package:unifonic_sdk_flutter/model/uni_feature.dart';
@@ -25,7 +23,6 @@ class Unifonic {
   factory Unifonic() => _instance;
   static late UniPushVM _pushVM;
   static late UniLocationVM _locationVM;
-  static final HttpService _httpService = HttpService();
   static final Capabilities _capabilities = Capabilities();
 
   /// Get the [UniPushVM] instance.
@@ -68,20 +65,7 @@ class Unifonic {
       _setupLifecycleTracking(feature.config);
     }
 
-    if (apiKey.isEmpty) {
-      throw Exception("API Key is required");
-    } else if (!apiKey.contains(":")) {
-      throw Exception(
-      """
-        Invalid API Key. The API Key should be formatted like "API_KEY:SECRET_KEY". 
-        An API Key generated on the Unifonic Console consists of an "API Key" and a "Secret Key". 
-        API Keys can be created in the Unifonic Console: https://cloud.unifonic.com/api-keys
-      """
-      );
-    }
-
-    _httpService.setHeader(
-        {'Content-Type': 'application/json', 'Authorization': 'Basic $apiKey'});
+    setApiKey(apiKey);
 
     for (UniFeature feature in features) {
       if (feature.config is UniPushConfig) {
@@ -114,21 +98,21 @@ class Unifonic {
       deviceInfoRequestDTO.deviceType = "iPhone";
       deviceInfoRequestDTO.deviceModel = iosInfo.model;
       deviceInfoRequestDTO.deviceOs = "IOS";
-
-      if (_capabilities.location == true) {
-        LatLngLike? position = await _locationVM.getCurrentPosition();
-        if (position != null) {
-          deviceInfoRequestDTO.latitude = position.latitude;
-          deviceInfoRequestDTO.longitude = position.longitude;
-          // deviceInfoRequestDTO.country = "UAE"; // should come from Geocoder
-        }
-      }
     }
 
-    deviceInfoRequestDTO.deviceLanguage = Platform.localeName;
+    deviceInfoRequestDTO.deviceLanguage = Platform.localeName.split("_").first;
     deviceInfoRequestDTO.deviceTimezone = DateTime.now().timeZoneName;
 
     var res = await _pushVM.registerDevice(deviceInfoRequestDTO);
+
+    if (_capabilities.location == true) {
+      LatLngLike? position = await _locationVM.getCurrentPosition();
+      if (position != null) {
+        // deviceInfoRequestDTO.latitude = position.latitude;
+        // deviceInfoRequestDTO.longitude = position.longitude;
+      }
+    }
+
     return res.isNotEmpty;
   }
 
@@ -141,17 +125,32 @@ class Unifonic {
     _locationVM.dispose();
   }
 
-  void _setupPushNotifications(UniFeatureConfig config) {
-    _pushVM = UniPushVM();
-    _addTokenEventListener();
+  /// This should not be used. The SDK Environment defaults to Production.
+  /// This method is used for internal testing purposes within Unifonic only.
+  /// All our internal environments require a VPN connection from the device.
+  static void setSdkBaseUrl(String baseUrl) {
+    HttpService().setSdkBaseUrl(baseUrl);
   }
 
-  void _addTokenEventListener() {
-    _pushVM.onNewTokenStream.listen(
-      (token) {
-        debugPrint('New token SDK: $token');
-      },
-    );
+  /// This should not be used. The API and Secret Key need to be set on initialization.
+  /// This method is used for internal testing purposes within Unifonic only.
+  /// All our internal environments require a VPN connection from the device.
+  static void setApiKey(String apiKey) {
+    if (apiKey.isEmpty) {
+      throw Exception("API Key is required");
+    } else if (!apiKey.contains(":")) {
+      throw Exception("""
+        Invalid API Key. The API Key should be formatted like "API_KEY:SECRET_KEY".
+        An API Key generated on the Unifonic Console consists of an "API Key" and a "Secret Key".
+        API Keys can be created in the Unifonic Console: https://cloud.unifonic.com/api-keys
+      """);
+    }
+
+    HttpService().setApiKey(apiKey);
+  }
+
+  void _setupPushNotifications(UniFeatureConfig config) {
+    _pushVM = UniPushVM();
   }
 
   void _setupLocationTracking(UniFeatureConfig config) {
@@ -162,12 +161,8 @@ class Unifonic {
         _locationVM.configureService(true);
 
         _locationVM.positionStream.listen(
-          (position) {
-            debugPrint('New position: $position');
-          },
-          onError: (error) {
-            debugPrint('Error: $error');
-          },
+          (position) {},
+          onError: (error) {},
         );
 
         _locationVM.startLocationUpdates();

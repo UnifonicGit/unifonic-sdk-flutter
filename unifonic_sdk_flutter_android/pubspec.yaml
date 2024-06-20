@@ -1,6 +1,6 @@
 name: unifonic_sdk_flutter_android
 description: Unifonic Flutter SDK for Android
-version: 0.0.5
+version: 0.0.6
 publish_to: none
 
 environment:

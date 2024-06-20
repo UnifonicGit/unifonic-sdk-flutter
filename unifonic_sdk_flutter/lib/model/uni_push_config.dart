@@ -8,14 +8,14 @@ class UniPush extends UniFeature<UniPushConfig> {
 
   factory UniPush({
     required String apiKey,
-    bool locationTracking = false,
-    bool lifecycleTracking = false,
+    // bool locationTracking = false,
+    // bool lifecycleTracking = false,
   }) {
     if (_instance == null) {
       final config = UniPushConfig(
         apiKey: apiKey,
-        locationTracking: locationTracking,
-        lifecycleTracking: lifecycleTracking,
+        locationTracking: false,
+        lifecycleTracking: false,
       );
       _instance = UniPush._(config);
     }

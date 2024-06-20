@@ -21,22 +21,22 @@ class LifecycleObserver with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     _state = state;
     if (state == AppLifecycleState.resumed) {
-      debugPrint('App is in the foreground');
+      // debugPrint('App is in the foreground');
       // Call API and save event that user opened app
       if (enabledAudienceTracking) {
-        debugPrint("HTTP CALL TO TRACK OPENED");
+        // debugPrint("HTTP CALL TO TRACK OPENED");
       }
     } else if (state == AppLifecycleState.paused) {
-      debugPrint('App is in the background');
+      // debugPrint('App is in the background');
       // Call API and save event that user minimized app
       if (enabledAudienceTracking) {
-        debugPrint("HTTP CALL TO TRACK MINIMIZED");
+        // debugPrint("HTTP CALL TO TRACK MINIMIZED");
       }
     } else if (state == AppLifecycleState.detached) {
-      debugPrint('App is detached');
+      // debugPrint('App is detached');
       // Call API and save event that user closed app
       if (enabledAudienceTracking) {
-        debugPrint("HTTP CALL TO TRACK CLOSED");
+        // debugPrint("HTTP CALL TO TRACK CLOSED");
       }
     }
   }

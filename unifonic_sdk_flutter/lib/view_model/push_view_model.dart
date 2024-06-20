@@ -124,7 +124,7 @@ class UniPushVM {
       _sharedPreferences ??= await SharedPreferences.getInstance();
       await _sharedPreferences!.setString('userIdentifier', userIdentifier);
     } catch (e) {
-      debugPrint("Failed to save user identifier");
+      return userIdentifier;
     }
     return userIdentifier;
   }

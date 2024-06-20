@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import '../service/geolocation_service.dart';
 
@@ -48,9 +47,8 @@ class UniLocationVM {
       Position position = await _geolocationService.determinePosition();
       return LatLngLike(position.latitude, position.longitude);
     } catch (e) {
-      debugPrint("Error: $e");
+      return null;
     }
-    return null;
   }
 
   void dispose() {

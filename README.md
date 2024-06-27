@@ -18,7 +18,7 @@ dependencies:
     git:
       url: https://github.com/UnifonicGit/unifonic-sdk-flutter.git
       path: unifonic_sdk_flutter
-      ref: release/0.0.6
+      ref: release/0.0.11
 ```
 ---
 2. Additional setup requirements:  

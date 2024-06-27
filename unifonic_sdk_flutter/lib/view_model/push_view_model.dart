@@ -113,9 +113,8 @@ class UniPushVM {
     return await _httpService.registerDevice(uniDeviceInfo);
   }
 
-  Future<void> setUserIdentifier(dynamic userIdentifier) async {
-    userIdentifier ??= await _getUserIdentifier();
-    _userIdentifier = userIdentifier;
+  Future<void> setUserIdentifier(String? userIdentifier) async {
+    _userIdentifier = userIdentifier ?? await _getUserIdentifier();
   }
 
   Future<String> _getUserIdentifier() async {

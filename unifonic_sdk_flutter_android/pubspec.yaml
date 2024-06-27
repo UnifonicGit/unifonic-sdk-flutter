@@ -1,6 +1,6 @@
 name: unifonic_sdk_flutter_android
 description: Unifonic Flutter SDK for Android
-version: 0.0.8
+version: 0.0.9
 publish_to: none
 
 environment:
@@ -13,7 +13,8 @@ dependencies:
   unifonic_sdk_flutter_platform_interface:
     git:
       url: https://github.com/UnifonicGit/unifonic-sdk-flutter.git
-      path: "unifonic_sdk_flutter_platform_interface"
+      path: unifonic_sdk_flutter_platform_interface
+      ref: release/0.0.8
 
 dev_dependencies:
   flutter_test:

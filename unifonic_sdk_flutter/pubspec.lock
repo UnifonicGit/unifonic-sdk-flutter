@@ -148,10 +148,10 @@ packages:
     dependency: transitive
     description:
       name: geolocator_platform_interface
-      sha256: c6005787efe9e27cb0f6b50230c217e6f0ef8e1e7a8b854efb4f46489e502603
+      sha256: "386ce3d9cce47838355000070b1d0b13efb5bc430f8ecda7e9238c8409ace012"
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.3"
+    version: "4.2.4"
   geolocator_web:
     dependency: transitive
     description:
@@ -292,10 +292,10 @@ packages:
     dependency: transitive
     description:
       name: platform
-      sha256: "12220bb4b65720483f8fa9450b4332347737cf8213dd2840d8b2c823e47243ec"
+      sha256: "9b71283fc13df574056616011fb138fd3b793ea47cc509c189a6c3fa5f8a1a65"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.4"
+    version: "3.1.5"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -433,29 +433,29 @@ packages:
     dependency: "direct main"
     description:
       path: unifonic_sdk_flutter_android
-      ref: HEAD
-      resolved-ref: "9b3d974bd735724985b93a37410c8ce8baafcdc7"
+      ref: "release/0.0.9"
+      resolved-ref: "4c84c441f18083f45ba6a6277dcccc085aa3d777"
       url: "https://github.com/UnifonicGit/unifonic-sdk-flutter.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.9"
   unifonic_sdk_flutter_ios:
     dependency: "direct main"
     description:
       path: unifonic_sdk_flutter_ios
-      ref: HEAD
-      resolved-ref: "9b3d974bd735724985b93a37410c8ce8baafcdc7"
+      ref: "release/0.0.9"
+      resolved-ref: "4c84c441f18083f45ba6a6277dcccc085aa3d777"
       url: "https://github.com/UnifonicGit/unifonic-sdk-flutter.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.9"
   unifonic_sdk_flutter_platform_interface:
     dependency: "direct main"
     description:
       path: unifonic_sdk_flutter_platform_interface
-      ref: HEAD
-      resolved-ref: "9b3d974bd735724985b93a37410c8ce8baafcdc7"
+      ref: "release/0.0.8"
+      resolved-ref: "1823c061cc39ffd59970dd60d7531d05e07b09e5"
       url: "https://github.com/UnifonicGit/unifonic-sdk-flutter.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.8"
   uuid:
     dependency: "direct main"
     description:

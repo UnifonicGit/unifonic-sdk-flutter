@@ -195,9 +195,11 @@ packages:
   unifonic_sdk_flutter_platform_interface:
     dependency: "direct main"
     description:
-      path: "../unifonic_sdk_flutter_platform_interface"
-      relative: true
-    source: path
+      path: unifonic_sdk_flutter_platform_interface
+      ref: HEAD
+      resolved-ref: "9b3d974bd735724985b93a37410c8ce8baafcdc7"
+      url: "https://github.com/UnifonicGit/unifonic-sdk-flutter.git"
+    source: git
     version: "0.0.1"
   vector_math:
     dependency: transitive
